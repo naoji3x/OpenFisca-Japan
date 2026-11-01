@@ -238,10 +238,13 @@ export const PersonCount: Story = {
       type: 'PersonNum',
       selection: 0,
     });
-    // Preserve the current behavior: validity updates when yes is clicked again.
-    await expect(valid).toHaveTextContent('true');
-    await click(yes);
+    await selected(yes, true);
     await expect(valid).toHaveTextContent('false');
+    await userEvent.type(input, '2');
+    await expect(args.assignFunc).toHaveBeenLastCalledWith(
+      initialAnswers.personNum
+    );
+    await expect(valid).toHaveTextContent('true');
   },
 };
 export const RestoredPersonCount: Story = {

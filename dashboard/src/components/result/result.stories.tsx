@@ -22,7 +22,7 @@ const checkAccordionKeyboard = async (button: HTMLElement) => {
   await userEvent.keyboard(' ');
   await expect(button).toHaveAttribute('aria-expanded', 'true');
   const panel = document.getElementById(button.getAttribute('aria-controls')!)!;
-  await expect(panel).toBeVisible();
+  await waitFor(() => expect(panel).toBeVisible());
   await userEvent.tab();
   await expect(
     within(panel).getByRole('link', { name: '詳細リンク' })

@@ -178,6 +178,7 @@ export const PersonNumQuestionTemplate = ({
           <FormControl>
             <HStack>
               <Input
+                aria-label="人数"
                 height="3.5em"
                 type={isMobile ? 'number' : 'text'}
                 value={shownPersonNum}
